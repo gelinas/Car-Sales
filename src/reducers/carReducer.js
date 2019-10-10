@@ -24,6 +24,7 @@ export const carReducer = (state = initialState, action) => {
       console.log("buy feature fired, old state", state)
       return {
         ...state,
+        additionalPrice: state.additionalPrice + action.payload.price,
         car: {
           ...state.car,
           features: [...state.car.features, action.payload]
@@ -33,6 +34,7 @@ export const carReducer = (state = initialState, action) => {
       case REMOVE_FEATURE:
         return {
           ...state,
+          additionalPrice: state.additionalPrice - action.payload.price,
           car: {
             ...state.car,
             features: state.car.features.filter(feature => feature !== action.payload)

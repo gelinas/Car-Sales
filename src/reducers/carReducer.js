@@ -1,4 +1,4 @@
-import { /* actions */ } from '../actions';
+import { BUY_FEATURE, REMOVE_FEATURE } from '../actions';
 
 const initialState = {
   additionalPrice: 0,
@@ -20,17 +20,25 @@ const initialState = {
 export const carReducer = (state = initialState, action) => {
   console.log("carReducer called with", action, state);
   switch (action.type) {
-//     case TOGGLE_EDIT:
-//       return {
-//         ...state,
-//         editing: !state.editing
-//       };
-//     case SET_TITLE:
-//       return {
-//         ...state,
-//         title: action.payload,
-//         editing: false
-//         };
+    case BUY_FEATURE:
+      console.log("buy feature fired, old state", state)
+      return {
+        ...state,
+        car: {
+          ...state.car,
+          features: [...state.car.features, action.payload]
+        },
+        additionalFeatures: state.additionalFeatures.filter(feature => feature !== action.payload)
+      };
+      case REMOVE_FEATURE:
+        return {
+          ...state,
+          car: {
+            ...state.car,
+            features: state.car.features.filter(feature => feature !== action.payload)
+          },
+          additionalFeatures: [...state.additionalFeatures, action.payload]
+        };
     default:
       return state;
   }

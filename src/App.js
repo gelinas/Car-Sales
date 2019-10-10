@@ -42,7 +42,7 @@ const App = (props) => {
 };
 
 const mapStateToProps = state => {
-  console.log("state from App.js mapStateToProps", state);
+  // console.log("state from App.js mapStateToProps", state);
   // the keys of the returned obj will be props passed into the component
   return {
     additionalPrice: state.car.additionalPrice,

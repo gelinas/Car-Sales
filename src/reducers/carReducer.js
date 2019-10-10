@@ -18,10 +18,10 @@ const initialState = {
 };
 
 export const carReducer = (state = initialState, action) => {
-  console.log("carReducer called with", action, state);
+  // console.log("carReducer called with", action, state);
   switch (action.type) {
     case BUY_FEATURE:
-      console.log("buy feature fired, old state", state)
+      // console.log("buy feature fired, old state", state)
       return {
         ...state,
         additionalPrice: state.additionalPrice + action.payload.price,
